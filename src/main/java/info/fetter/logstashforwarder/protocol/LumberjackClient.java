@@ -77,10 +77,10 @@ public class LumberjackClient implements ProtocolAdapter {
 			keyStore = KeyStore.getInstance("JKS");
 			keyStore.load(new FileInputStream(keyStorePath), null);
 
-			TrustManagerFactory tmf = TrustManagerFactory.getInstance("PKIX");
+			TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 			tmf.init(keyStore);
 
-			SSLContext context = SSLContext.getInstance("TLS");
+			SSLContext context = SSLContext.getInstance("TLSv1.2");
 			context.init(null, tmf.getTrustManagers(), null);
 
 			SSLSocketFactory socketFactory = context.getSocketFactory();
