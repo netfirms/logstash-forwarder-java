@@ -4,7 +4,7 @@
 
 Logstash-forwarder-java is a log shipper program written in java. This is in fact a java version of [logstash-forwarder](https://github.com/elasticsearch/logstash-forwarder) by jordansissel.
 Here are a few features of this program :
-  - compatible with Java 5 runtime
+  - compatible with AIX IBM Java 8 runtime (other *nix systems better use beat)
   - lightweight : package size is ~2MB and memory footprint ~8MB
   - configuration compatible with logstash-forwarder
   - lumberjack output (including zlib compression)
@@ -20,13 +20,15 @@ So logstash-forwarder-java is a solution for those who want a portable, lightwei
 ## How to install it ?
 
 Download one of the following archives :
-  - [logstash-forwarder-java-0.2.4-bin.zip](https://github.com/didfet/logstash-forwarder-java/releases/download/0.2.4/logstash-forwarder-java-0.2.4-bin.zip)
-  - [logstash-forwarder-java-0.2.4-bin.tar.gz](https://github.com/didfet/logstash-forwarder-java/releases/download/0.2.4/logstash-forwarder-java-0.2.4-bin.tar.gz)
-  - [logstash-forwarder-java-0.2.4-bin.tar.bz2](https://github.com/didfet/logstash-forwarder-java/releases/download/0.2.4/logstash-forwarder-java-0.2.4-bin.tar.bz2)
+  - [logstash-forwarder-java-0.2.6-bin.zip](https://github.com/netfirms/logstash-forwarder-java/releases/download/0.2.6/logstash-forwarder-java-0.2.6-bin.zip)
+  - [logstash-forwarder-java-0.2.6-bin.tar.gz](https://github.com/netfirms/logstash-forwarder-java/releases/download/0.2.6/logstash-forwarder-java-0.2.6-bin.tar.gz)
+  - [logstash-forwarder-java-0.2.6-bin.tar.bz2](https://github.com/netfirms/logstash-forwarder-java/releases/download/0.2.6/logstash-forwarder-java-0.2.6-bin.tar.bz2)
 
 Or download the maven project and run maven package. Then you can install one of the archives located in the target directory.
 
-## Generate SSL Certificates (Logstash side)
+## Generate SSL Certificates (Logstash side) 
+
+Just wrap it up from [How To Install Elasticsearch, Logstash, and Kibana (ELK Stack) on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-7)
 
 Option 1: IP Address :
 If you don't have a DNS setup—that would allow your servers, that you will gather logs from, to resolve the IP address of your ELK Server—you will have to add your ELK Server's private IP address to the subjectAltName (SAN) field of the SSL certificate that we are about to generate. To do so, open the OpenSSL configuration file:
@@ -131,6 +133,10 @@ To list the contents of the keystore file, run this command (with your password)
 Just run this command :
 
     java -jar logstash-forwarder-java-X.Y.Z.jar -config /path/to/config/file.json
+
+For debug mode run :
+
+    java -jar logstash-forwarder-java-X.Y.Z.jar -config /path/to/config/file.json -debug
 
 For help run :
 
